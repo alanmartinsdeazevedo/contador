@@ -10,11 +10,52 @@ end Decod7segmentos;
 
 architecture arc of Decod7segmentos is
 begin
-	a <= not(i3 or i1 or (i1 and i0) or (not(i1) and not(i0)));
-	b <= not(not(i2) or (i1 and i0) or (not(i1) and not(i0)));
-	c <= not(i2 or not(i1) or i0);
-	d <= not(i3 or (not(i2) and not(i0)) or (i1 and not(i2)) or (i1 and not(i0)) or (i2 and not(i1) and i0));
-	e <= not((not(i2) and not(i0)) or (i1 and not(i0)));
-	f <= not(i3 or (not(i1) and not(i0)) or (not(i1) and i2) or (i2 and not(i0)));
-	g <= not(i3 or (i2 and not(i1)) or (not(i2) and i1) or (i2 and not(i0)));
+	-- Tabela verdade correta para display de 7 segmentos (anodo comum)
+	-- Numeros 0-9: segmentos ativos em nivel baixo
+	a <= not((not i3 and not i2 and not i1 and not i0) or  -- 0
+	          (not i3 and not i2 and i1 and not i0) or      -- 2
+	          (not i3 and i2 and i1 and i0) or              -- 7
+	          (i3 and not i2 and not i1 and not i0));       -- 8
+	          
+	b <= not((not i3 and not i2 and not i1 and not i0) or  -- 0
+	          (not i3 and not i2 and not i1 and i0) or      -- 1
+	          (not i3 and not i2 and i1 and not i0) or      -- 2
+	          (not i3 and not i2 and i1 and i0) or          -- 3
+	          (not i3 and i2 and not i1 and not i0) or      -- 4
+	          (not i3 and i2 and i1 and i0) or              -- 7
+	          (i3 and not i2 and not i1 and not i0));       -- 8
+	          
+	c <= not((not i3 and not i2 and not i1 and not i0) or  -- 0
+	          (not i3 and not i2 and not i1 and i0) or      -- 1
+	          (not i3 and not i2 and i1 and i0) or          -- 3
+	          (not i3 and i2 and not i1 and not i0) or      -- 4
+	          (not i3 and i2 and not i1 and i0) or          -- 5
+	          (not i3 and i2 and i1 and not i0) or          -- 6
+	          (not i3 and i2 and i1 and i0) or              -- 7
+	          (i3 and not i2 and not i1 and not i0));       -- 8
+	          
+	d <= not((not i3 and not i2 and not i1 and not i0) or  -- 0
+	          (not i3 and not i2 and i1 and not i0) or      -- 2
+	          (not i3 and not i2 and i1 and i0) or          -- 3
+	          (not i3 and i2 and not i1 and i0) or          -- 5
+	          (not i3 and i2 and i1 and not i0) or          -- 6
+	          (i3 and not i2 and not i1 and not i0));       -- 8
+	          
+	e <= not((not i3 and not i2 and not i1 and not i0) or  -- 0
+	          (not i3 and not i2 and i1 and not i0) or      -- 2
+	          (not i3 and i2 and i1 and not i0) or          -- 6
+	          (i3 and not i2 and not i1 and not i0));       -- 8
+	          
+	f <= not((not i3 and not i2 and not i1 and not i0) or  -- 0
+	          (not i3 and i2 and not i1 and not i0) or      -- 4
+	          (not i3 and i2 and not i1 and i0) or          -- 5
+	          (not i3 and i2 and i1 and not i0) or          -- 6
+	          (i3 and not i2 and not i1 and not i0));       -- 8
+	          
+	g <= not((not i3 and not i2 and i1 and not i0) or      -- 2
+	          (not i3 and not i2 and i1 and i0) or          -- 3
+	          (not i3 and i2 and not i1 and not i0) or      -- 4
+	          (not i3 and i2 and not i1 and i0) or          -- 5
+	          (not i3 and i2 and i1 and not i0) or          -- 6
+	          (i3 and not i2 and not i1 and not i0));       -- 8
 end arc;
