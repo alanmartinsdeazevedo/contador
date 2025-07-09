@@ -32,6 +32,6 @@ begin
     Q(2) <= Clock2;
     Q(3) <= Clock3;
 	 
-	 clear <= Clock1 and not(Clock2) and Clock3 and not(Clock0);
+	 clear <= Clock1 and not(Clock2) and Clock3;
     
 end arch;
