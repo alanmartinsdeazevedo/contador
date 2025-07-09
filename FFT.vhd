@@ -13,15 +13,15 @@ end FFT;
 architecture arch of FFT is
     signal Q_interno : std_logic := '0';
 begin
-    process(CLK, CLR)
+    process(CLK)
     begin
-			if (CLR = '1') then
-				Q_interno <= '0';
-        elsif falling_edge(CLK) then
-            if T = '1' then
+        if falling_edge(CLK) then
+            if (CLR = '1') then
+                Q_interno <= '0';
+            elsif T = '1' then
                 Q_interno <= not Q_interno;
             end if;
-		end if;
+        end if;
     end process;
     
     Q <= Q_interno;
