@@ -39,8 +39,8 @@ architecture arch of Principal is
     end component;
     
 begin
-    --i0: DivisorFrequencia port map (CLK, novoclock);
-    i1: Contador port map (clk, contador_out);
+    i0: DivisorFrequencia port map (CLK, novoclock);
+    i1: Contador port map (novoclock, contador_out);
     
     contador_int <= to_integer(unsigned(contador_out));
     

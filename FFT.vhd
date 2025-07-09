@@ -17,12 +17,10 @@ begin
     begin
 			if (CLR = '1') then
 				Q_interno <= '0';
-        else
-			if falling_edge(CLK) then
+        elsif falling_edge(CLK) then
             if T = '1' then
                 Q_interno <= not Q_interno;
             end if;
-			end if;
 		end if;
     end process;
     
