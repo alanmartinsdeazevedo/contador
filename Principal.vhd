@@ -14,7 +14,7 @@ end Principal;
 architecture arch of Principal is
     signal novoclock: std_logic;
     signal contador_out: std_logic_vector(3 downto 0);
-    signal contador_int: integer range 0 to 15;
+    signal contador_int: integer range 0 to 10;
     signal unidade, dezena: std_logic_vector(3 downto 0);
     
     component DivisorFrequencia
@@ -55,9 +55,6 @@ begin
             LEDS <= "1111111111";
             unidade <= "0000";
             dezena <= "0001";
-        else
-            unidade <= std_logic_vector(to_unsigned(contador_int mod 10, 4));
-            dezena <= std_logic_vector(to_unsigned(contador_int / 10, 4));
         end if;
     end process;
     
