@@ -14,6 +14,7 @@ begin
 	-- Numeros 0-9: segmentos ativos em nivel baixo
 	a <= not((not i3 and not i2 and not i1 and not i0) or  -- 0
 	          (not i3 and not i2 and i1 and not i0) or      -- 2
+	          (not i3 and not i2 and i1 and i0) or          -- 3
 	          (not i3 and i2 and i1 and i0) or              -- 7
 	          (i3 and not i2 and not i1 and not i0) or      -- 8
 	          (i3 and not i2 and not i1 and i0));           -- 9
